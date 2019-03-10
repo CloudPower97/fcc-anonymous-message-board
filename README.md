@@ -11,24 +11,23 @@ This project is part of the **FCC Information Security and Quality Assurance Cer
 1. Only allow your site to be loading in an iFrame on your own pages. This is achieved setting `X-Frame-Options` header to `SAMEORIGIN`
 2. Do not allow DNS prefetching. This is achieved setting `X-DNS-Prefetch-Control` header to `off`
 3. Only allow your site to send the referrer for your own pages. This is achieved setting `Referrer-Policy` header to `same-origin`
-4. I can `POST` a _thread_ to a specific _message board_ by passing form data text and delete_password to `/api/threads/{board}`.(Recomend res.redirect to board page /b/{board}) Saved will be \_id, text, created_on(date&time), bumped_on(date&time, starts same as created_on), reported(boolean), delete_password, & replies(array).
-5. I can `POST` a _reply_ to a thead on a specific _board_ by passing form data text, delete_password, & thread_id to `/api/replies/{board}` and it will also update the bumped_on date to the comments date.(Recomend res.redirect to thread page /b/{board}/{thread_id}) In the thread's 'replies' array will be saved \_id, text, created_on, delete_password, & reported.
-6. I can `GET` an array of the most recent 10 bumped threads on the board with only the most recent 3 replies from /api/threads/{board}. The reported and delete_passwords fields will not be sent.
-7. I can `GET` an entire thread with all it's replies from /api/replies/{board}?thread_id={thread_id}. Also hiding the same fields.
-8. I can `DELETE` a thread completely if I send a request to `/api/threads/{board}` and pass along the thread_id & delete_password. (Text response will be 'incorrect password' or 'success')
-9. I can `DELETE` a post (just changing the text to '[deleted]') if I send a request to `/api/replies/{board}` and pass along the thread_id, reply_id, & delete_password. (Text response will be 'incorrect password' or 'success')
-10. I can report a thread and change it's reported value to true by sending a `PUT` request to `/api/threads/{board}` and pass along the thread_id. (Text response will be 'success')
-11. I can report a reply and change it's reported value to true by sending a `PUT` request to `/api/replies/{board}` and pass along the thread_id & reply_id. (Text response will be 'success')
+4. I can `POST` a _thread_ to a specific _message board_ by passing form data text and delete\*password to `/api/threads/{board}`. Saved will be _id_, _text_, _created_on_(date&time), _bumped_on_(date&time, starts same as created*on), \_reported*(boolean), delete_password, & \_replies\*(array).
+5. I can `POST` a _reply_ to a thead on a specific _board_ by passing form data _text_, _delete_password_, & _thread_id_ to `/api/replies/{board}` and it will also update the bumped*on date to the comments date.
+   In the thread's \*'replies'* array will be saved \_id*, \_text*, _created_on_, _delete_password_, & _reported_.
+6. I can `GET` an array of the most recent 10 bumped threads on the board with only the most recent 3 replies from `/api/threads/{board}`. The _reported_ and _delete_passwords_ fields will not be sent.
+7. I can `GET` an entire _thread_ with all it's _replies_ from `/api/replies/{board}?thread_id={thread_id}`. Also hiding the same fields.
+8. I can `DELETE` a _thread_ completely if I send a request to `/api/threads/{board}` and pass along the _thread_id_ & _delete_password_. (Text response will be _'incorrect password'_ or _'success'_)
+9. I can `DELETE` a post (just changing the text to _'[deleted]'_) if I send a request to `/api/replies/{board}` and pass along the _thread_id_, _reply_id_, & _delete_password_. (Text response will be _'incorrect password'_ or _'success'_)
+10. I can report a _thread_ and change it's reported value to true by sending a `PUT` request to `/api/threads/{board}` and pass along the _thread_id_. (Text response will be _'success'_)
+11. I can report a reply and change it's reported value to true by sending a `PUT` request to `/api/replies/{board}` and pass along the _thread_id_ & _reply_id_. (Text response will be _'success'_)
 12. Complete functional tests that wholely test routes and pass.
 
 ## Example usage
 
-<https://fcc-anonymous-message-board.herokuapp.com/api/stock-prices?stock=goog>
+<https://fcc-anonymous-message-board.herokuapp.com/api/threads/general>
 
-<https://fcc-anonymous-message-board.herokuapp.com/api/stock-prices?stock=goog&like=true>
+<https://fcc-anonymous-message-board.herokuapp.com/api/threads/general?thread_id=1>
 
-<https://fcc-anonymous-message-board.herokuapp.com/api/stock-prices?stock=goog&stock=msft>
-
-<https://fcc-anonymous-message-board.herokuapp.com/api/stock-prices?stock=goog&stock=msft&like=true>
+<https://fcc-anonymous-message-board.herokuapp.com/api/boards>
 
 Coded with music, coffee and love by _Claudio Cortese_
