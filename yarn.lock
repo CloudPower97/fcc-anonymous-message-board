@@ -520,7 +520,7 @@ cross-spawn@^5.0.1:
     shebang-command "^1.2.0"
     which "^1.2.9"
 
-cross-spawn@^6.0.0, cross-spawn@^6.0.5:
+cross-spawn@^6.0.0:
   version "6.0.5"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-6.0.5.tgz#4a5ec7c64dfae22c3a14124dbacdee846d80cbc4"
   integrity sha512-eTVLrBSt7fjbDygz805pMnstIs2VTBNkRm0qxZd+M7A5XDdxVRWO5MxGBXZhjY4cqLYLdtrGqRf8mBPmzwSpWQ==
@@ -689,13 +689,6 @@ end-of-stream@^1.1.0:
   integrity sha512-1MkrZNvWTKCaigbn+W15elq2BB/L22nqrSY5DKlo3X6+vclJm8Bb5djXJBmEX6fS3+zCh/F4VBK5Z2KxJt4s2Q==
   dependencies:
     once "^1.4.0"
-
-env-cmd@^8.0.2:
-  version "8.0.2"
-  resolved "https://registry.yarnpkg.com/env-cmd/-/env-cmd-8.0.2.tgz#e3bf53b8e4676781bdc3a0b1a2f7612cbcda4da4"
-  integrity sha512-gHX8MnQXw1iS7dc2KeJdBdxca7spIkxkNwIuORLwm8kDg6xHh5wWnv1Yv3pc64nLZR6kufQSCmwTz16sRmd/rg==
-  dependencies:
-    cross-spawn "^6.0.5"
 
 es-abstract@^1.5.1:
   version "1.13.0"
