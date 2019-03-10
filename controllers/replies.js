@@ -81,27 +81,29 @@ exports.reportReply = ({ db, body: { reply_id: id } }, res) => {
   })
 }
 
-exports.deleteReply = ({ db, body: { reply_id: id } }, res) => {
+exports.deleteReply = ({ db, body: { reply_id: id, delete_password: password } }, res) => {
   const Reply = db.import('../models/reply.js')
 
   Reply.findByPk(id).then(reply => {
     if (!reply) {
       res.sendStatus(404)
     } else {
-      if (!equal) {
-        res.status(401).json({
-          error: 'Incorrect password',
-        })
-      } else {
-        reply
-          .update({ text: '[deleted]' })
-          .then(() => {
-            res.json({ message: 'Success' })
+      reply.comparePassword(password).then(equal => {
+        if (!equal) {
+          res.status(401).json({
+            error: 'Incorrect password',
           })
-          .catch(error => {
-            res.status(400).json(error)
-          })
-      }
+        } else {
+          reply
+            .update({ text: '[deleted]' })
+            .then(() => {
+              res.json({ message: 'Success' })
+            })
+            .catch(error => {
+              res.status(400).json(error)
+            })
+        }
+      })
     }
   })
 }
